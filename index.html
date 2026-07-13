@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reordenar Registros Horarios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="card">
+    <div class="card-icon">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="9" stroke="#3851d8" stroke-width="1.8"/>
+        <path d="M12 7v5l3 2" stroke="#3851d8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h1>Reordenar Registros Horarios</h1>
+    <p class="subtitle">
+      Subí el Excel de Registros Horarios tal como lo descargás de Humand y
+      te devuelve el mismo archivo con el orden de columnas de
+      "Registros horarios 16-30 Junio".
+    </p>
+
+    <label id="dropzone" for="fileInput" class="dropzone">
+      <span id="dropzoneText">Arrastrá el archivo acá o hacé click para elegirlo</span>
+      <input type="file" id="fileInput" accept=".xlsx,.xls" hidden />
+    </label>
+
+    <div id="status" class="status"></div>
+
+    <button id="downloadBtn" class="download-btn" disabled>
+      Descargar Excel reordenado
+    </button>
+
+    <details class="help">
+      <summary>¿Qué hace exactamente?</summary>
+      <ol>
+        <li>Lee el Excel que subiste y detecta la fila de encabezados.</li>
+        <li>Reordena las columnas según la lista definida en <code>config.js</code>.</li>
+        <li>Si falta alguna columna en tu archivo (por ejemplo "Legajo" u
+          "Observaciones"), la deja en blanco en vez de romper el proceso.</li>
+        <li>Mantiene los formatos originales (horas, fechas, etc.).</li>
+        <li>Genera un Excel nuevo listo para descargar. Todo pasa en tu
+          navegador, el archivo no se sube a ningún servidor.</li>
+      </ol>
+    </details>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
